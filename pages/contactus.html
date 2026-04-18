@@ -1,0 +1,87 @@
+<t name="Contact Us" t-name="website.contactus">
+  <t t-call="website.layout">
+    <t t-set="logged_partner" t-value="request.env['website.visitor']._get_visitor_from_request().partner_id"/>
+    <t t-set="contactus_form_values" t-value="{                 'email_to': res_company.email,                 'name': request.params.get('name', ''),                 'phone': request.params.get('phone', ''),                 'email_from': request.params.get('email_from', ''),                 'company': request.params.get('company', ''),                 'subject': request.params.get('subject', ''),             }"/>
+    <span class="hidden" data-for="contactus_form" t-att-data-values="contactus_form_values"/>
+    <div id="wrap" class="oe_structure">
+
+      <section class="o_colored_level py-5 bg-nogara-dark text-white text-center">
+        <div class="container py-4">
+          <h1 class="display-4 fw-bold">Get in touch</h1>
+          <p class="lead mx-auto mt-3" style="max-width:560px; color:rgba(255,255,255,.75);">
+            We're based in Zaragoza and work on projects across Spain. Tell us about your project and we'll get back to you shortly.
+          </p>
+        </div>
+      </section>
+
+      <section class="o_colored_level py-5 o_cc o_cc2">
+        <div class="container">
+          <div class="row g-5 justify-content-center">
+            <div class="col-lg-4 o_colored_level">
+              <div class="card border-0 shadow-sm p-4 h-100">
+                <h4 class="fw-bold mb-4">Contact details</h4>
+                <div class="mb-3">
+                  <p class="fw-semibold mb-1" style="color:#475569;">📍 Address</p>
+                  <p class="text-muted">CEMINEM. Campus Rio Ebro<br/>Calle Mariano Esquillor Gomez s/n<br/>50018, Zaragoza (Spain)</p>
+                </div>
+                <div class="mb-3">
+                  <p class="fw-semibold mb-1" style="color:#475569;">📞 Phone</p>
+                  <p class="text-muted">+34 650 807 785</p>
+                </div>
+                <div class="mb-3">
+                  <p class="fw-semibold mb-1" style="color:#475569;">💌 Email</p>
+                  <p class="text-muted">info@nogaraenergy.com</p>
+                </div>
+                <div>
+                  <p class="fw-semibold mb-1" style="color:#475569;">🕐 Hours</p>
+                  <p class="text-muted">Monday to Friday, 07:00 - 18:00</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 o_colored_level">
+              <div class="card border-0 shadow-sm p-4">
+                <h4 class="fw-bold mb-4">Send us a message</h4>
+                <section class="s_website_form o_colored_level" data-vcss="001" data-snippet="s_website_form">
+                  <div class="container">
+                    <form id="contactus_form" action="/website/form/" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="mail.mail" data-success-mode="redirect" data-success-page="/contactus-thank-you" data-pre-fill="true">
+                      <div class="s_website_form_rows row s_col_no_bgcolor">
+                        <div class="mb-3 col-lg-6 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                          <label class="s_website_form_label" for="contact_name"><span class="s_website_form_label_content">Name</span><span class="s_website_form_mark"> *</span></label>
+                          <input id="contact_name" type="text" class="form-control s_website_form_input" name="name" required=""/>
+                        </div>
+                        <div class="mb-3 col-lg-6 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                          <label class="s_website_form_label" for="contact_email"><span class="s_website_form_label_content">Email</span><span class="s_website_form_mark"> *</span></label>
+                          <input id="contact_email" type="email" class="form-control s_website_form_input" name="email_from" required=""/>
+                        </div>
+                        <div class="mb-3 col-lg-6 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                          <label class="s_website_form_label" for="contact_phone"><span class="s_website_form_label_content">Phone</span></label>
+                          <input id="contact_phone" type="tel" class="form-control s_website_form_input" name="phone"/>
+                        </div>
+                        <div class="mb-3 col-lg-6 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                          <label class="s_website_form_label" for="contact_company"><span class="s_website_form_label_content">Company</span></label>
+                          <input id="contact_company" type="text" class="form-control s_website_form_input" name="company"/>
+                        </div>
+                        <div class="mb-3 col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                          <label class="s_website_form_label" for="contact_subject"><span class="s_website_form_label_content">Subject</span><span class="s_website_form_mark"> *</span></label>
+                          <input id="contact_subject" type="text" class="form-control s_website_form_input" name="subject" required=""/>
+                        </div>
+                        <div class="mb-3 col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="text" data-name="Field">
+                          <label class="s_website_form_label" for="contact_desc"><span class="s_website_form_label_content">Message</span><span class="s_website_form_mark"> *</span></label>
+                          <textarea id="contact_desc" class="form-control s_website_form_input" name="description" rows="5" required=""/>
+                        </div>
+                      </div>
+                      <div class="s_website_form_submit text-end">
+                        <button type="submit" class="btn btn-lg" style="background-color:#1e293b;color:#fff;font-weight:500;border:none;">Send message</button>
+                      </div>
+                    </form>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </t>
+</t>
